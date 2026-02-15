@@ -1,7 +1,7 @@
 # Memory Matching Game - C++ Project
 
 ## Project Overview
-This is a console-based Memory Matching Game developed in C++ using Object-Oriented Programming (OOP) principles for a semester project.
+This is a console-based Memory Matching Game developed in C++ using Object-Oriented Programming (OOP) principles for the 2nd semester project.
 
 ## Features
 - **Single Player Mode**: Play alone and try to complete the game in minimum moves
@@ -11,24 +11,6 @@ This is a console-based Memory Matching Game developed in C++ using Object-Orien
   - Medium (5x5 grid - 12 pairs, 1 unpaired card)
   - Hard (6x6 grid - 18 pairs)
 
-## How to Compile and Run
-
-### On Windows (using g++)
-```bash
-g++ MemoryMatchingGame.cpp -o MemoryGame.exe
-MemoryGame.exe
-```
-
-### On Linux/Mac
-```bash
-g++ MemoryMatchingGame.cpp -o MemoryGame
-./MemoryGame
-```
-
-### Using an IDE (Code::Blocks, Dev-C++, Visual Studio)
-1. Create a new C++ project
-2. Add the MemoryMatchingGame.cpp file
-3. Build and run the project
 
 ## Game Rules
 1. All cards are placed face-down on a grid
@@ -125,22 +107,13 @@ Ali: 0 pairs
 Enter first card position (row col): 0 0
 ```
 
-## Future Enhancements (Optional)
-- Add a timer to track completion time
-- Implement difficulty levels with different symbols
-- Add a hint system
-- Create a leaderboard
-- Add sound effects (if using graphics library)
-- Implement a GUI version using SFML or SDL
 
 ## Notes
 - The code uses `<algorithm>` for `random_shuffle()` which is deprecated in C++14. For newer compilers, you may need to replace it with `shuffle()` from `<random>`.
 - Grid positions start from 0 (e.g., top-left is 0,0)
 - The 5x5 grid has 25 cards (odd number), so one card won't have a matching pair
 
-## Author
-Created for Object-Oriented Programming Course
-Semester Project
-
-## License
-Free to use for educational purposes
+## Authors
+Saad Bin Asad
+Maham Touseef
+Eman Maqsood
