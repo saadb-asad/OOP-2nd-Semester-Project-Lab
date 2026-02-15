@@ -114,6 +114,6 @@ Enter first card position (row col): 0 0
 - The 5x5 grid has 25 cards (odd number), so one card won't have a matching pair
 
 ## Authors
-Saad Bin Asad
-Maham Touseef
-Eman Maqsood
+- Saad Bin Asad
+- Maham Touseef
+- Eman Maqsood
