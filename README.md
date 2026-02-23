@@ -26,7 +26,7 @@ A console-based Memory Matching Game written in C++ as a semester project to dem
 
 ```
 Positions: [1] [2] [3] [4] [5] [6]
-Cards:      ?    ?    ?    ?    ?    ?
+Cards:      ?   ?   ?   ?   ?   ?
 ```
 
 - `?` — card is hidden
