@@ -1,119 +1,107 @@
-# Memory Matching Game - C++ Project
+# Memory Matching Game
+A console-based Memory Matching Game written in C++ as a semester project to demonstrate core Object-Oriented Programming concepts.
 
-## Project Overview
-This is a console-based Memory Matching Game developed in C++ using Object-Oriented Programming (OOP) principles for the 2nd semester project.
+---
 
-## Features
-- **Single Player Mode**: Play alone and try to complete the game in minimum moves
-- **Multiplayer Mode**: Play with a friend and compete for the highest score
-- **Three Difficulty Levels**:
-  - Easy (4x4 grid - 8 pairs)
-  - Medium (5x5 grid - 12 pairs, 1 unpaired card)
-  - Hard (6x6 grid - 18 pairs)
+## How to Compile & Run
 
-
-## Game Rules
-1. All cards are placed face-down on a grid
-2. On each turn, flip two cards
-3. If they match, they stay face-up and you score a point
-4. If they don't match, they flip back face-down
-5. Remember the positions of cards to find matching pairs
-6. The game ends when all pairs are found
-
-### Single Player
-- Complete the game in as few moves as possible
-- Track your move count
-
-### Multiplayer
-- Players take turns flipping cards
-- If you find a match, you get a point and take another turn
-- If no match, the turn passes to the other player
-- Player with the most pairs wins!
-
-## Object-Oriented Design
-
-### Classes Used
-
-#### 1. Card Class
-- **Attributes**: symbol, faceUp, matched
-- **Methods**: getSymbol(), isFaceUp(), isMatched(), flip(), setMatched(), display()
-- **Purpose**: Represents a single card in the game
-
-#### 2. Player Class
-- **Attributes**: name, score
-- **Methods**: getName(), getScore(), addPoint(), displayInfo()
-- **Purpose**: Stores player information and tracks score
-
-#### 3. Board Class
-- **Attributes**: grid (2D vector of Cards), size, totalPairs, foundPairs
-- **Methods**: initializeBoard(), display(), isValidPosition(), isCardAvailable(), flipCard(), checkMatch(), setCardsMatched(), isGameComplete()
-- **Purpose**: Manages the game board and card grid
-
-#### 4. Game Class
-- **Attributes**: board, players, currentPlayerIndex, isSinglePlayer, moveCount
-- **Methods**: start(), setupGameMode(), setupDifficulty(), setupPlayers(), playGame(), takeTurn(), endGame()
-- **Purpose**: Controls the game flow and logic
-
-## Code Structure
-```
-MemoryMatchingGame.cpp
-├── Card Class (represents individual cards)
-├── Player Class (tracks player data)
-├── Board Class (manages the game grid)
-├── Game Class (controls game logic)
-└── main() function (entry point)
+```bash
+g++ memory_matching_game.cpp -o game
+./game
 ```
 
-## Key OOP Concepts Used
-- **Encapsulation**: Private data members with public methods
-- **Abstraction**: Hiding complex implementation details
-- **Classes and Objects**: Card, Player, Board, Game
-- **Dynamic Memory**: Using pointers for Board object
-- **Standard Template Library (STL)**: Vectors for dynamic arrays
+---
 
-## Sample Gameplay
+## How to Play
+
+1. Run the program and select a game mode.
+2. The board shows 6 face-down cards marked as `?`.
+3. On your turn, pick two card positions by entering their numbers.
+4. If both cards have the same value — it's a **MATCH** and they are marked as `*`.
+5. If they don't match, the turn passes to the other player.
+6. The game ends when all 3 pairs are found.
+
+---
+
+## Game Modes
+
+| Mode | Description |
+|---|---|
+| 1. Single Player | One player finds all pairs alone |
+| 2. Multiplayer | Two players take turns, most pairs wins |
+| 3. Play Against Computer | You vs the Computer |
+
+---
+
+## Board Layout
 
 ```
-========================================
-   WELCOME TO MEMORY MATCHING GAME!
-========================================
-
-Select Game Mode:
-1. Single Player
-2. Multiplayer (2 Players)
-Enter your choice (1 or 2): 1
-
-Select Difficulty:
-1. Easy (4x4)
-2. Medium (5x5)
-3. Hard (6x6)
-Enter your choice (1, 2, or 3): 1
-
-Enter your name: Ali
-
-========================================
-           GAME STARTING!
-========================================
-
-     0   1   2   3
- 0  [ * ][ * ][ * ][ * ]
- 1  [ * ][ * ][ * ][ * ]
- 2  [ * ][ * ][ * ][ * ]
- 3  [ * ][ * ][ * ][ * ]
-
-Current Scores:
-Ali: 0 pairs
-
-Enter first card position (row col): 0 0
+Positions: [1] [2] [3] [4] [5] [6]
+Cards:      ?    ?    ?    ?    ?    ?
 ```
 
+- `?` — card is hidden
+- `*` — card has been matched
 
-## Notes
-- The code uses `<algorithm>` for `random_shuffle()` which is deprecated in C++14. For newer compilers, you may need to replace it with `shuffle()` from `<random>`.
-- Grid positions start from 0 (e.g., top-left is 0,0)
-- The 5x5 grid has 25 cards (odd number), so one card won't have a matching pair
+There are **3 pairs** hidden on the board: values 1, 2, and 3 each appear twice.
 
-## Authors
-- Saad Bin Asad
-- Maham Touseef
-- Eman Maqsood
+---
+
+## OOP Concepts Used
+
+| Concept | Where |
+|---|---|
+| Classes & Objects | `Board`, `Player`, `HumanPlayer`, `ComputerPlayer` |
+| Constructors | Every class has a constructor |
+| Inheritance | `HumanPlayer` and `ComputerPlayer` extend `Player` |
+| Pointers | `Player* p1`, `Player* p2`, `Player* p` |
+| Arrays | `values[6]` and `matched[6]` in `Board` |
+| Dynamic Memory | `new` to create players, `delete` to free them |
+| Function Overloading | `display()` and `display(string message)` |
+| Polymorphism | `pickCard()` and `showResult()` resolved at runtime |
+| Abstract Class | `Player` has pure virtual `pickCard() = 0` |
+
+---
+
+## Project Structure
+
+```
+memory_matching_game.cpp
+│
+├── class Board          — manages the card grid
+├── class Player         — abstract base class
+├── class HumanPlayer    — human input handling
+├── class ComputerPlayer — computer AI logic
+├── playGame()           — main game loop
+└── main()               — mode selection & startup
+```
+
+---
+
+## Example Output
+
+```
+Select Mode:
+1.Single Player
+2.Multiplayer
+3.Play Against Computer
+Choice: 3
+
+Ready!
+Positions: [1] [2] [3] [4] [5] [6]
+Cards:      ?    ?    ?    ?    ?    ?
+
+Player 1's Turn
+Player 1, pick one card (1-6): 1
+Value: 1
+Player 1, pick one card (1-6): 4
+Value: 1
+MATCH!
+
+Computer's Turn
+Computer picks card 2
+Value: 2
+Computer again pick card 5
+Value: 2
+MATCH!
+```
