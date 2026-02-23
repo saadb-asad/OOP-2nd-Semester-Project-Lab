@@ -42,10 +42,7 @@ public:
         score = 0;
     }
 
-    virtual ~Player() {}
-
     virtual int pickCard(Board& board, int alreadyPicked) = 0;
-
     virtual void showResult() {
         cout << name << ": " << score << " pairs\n";
     }
@@ -54,10 +51,12 @@ public:
 
 class HumanPlayer : public Player {
 public:
-    HumanPlayer(string n) : Player(n) {}
-
-    int pickCard(Board& board, int alreadyPicked) override
+    HumanPlayer(string n) : Player (n)
     {
+        Player::name = n;
+    }
+
+    int pickCard(Board& board, int alreadyPicked) {
         int choice;
         cout << name << ", pick one card (1-6): ";
         cin >> choice;
@@ -66,24 +65,24 @@ public:
 };
 
 
-
 class ComputerPlayer : public Player {
 public:
-    ComputerPlayer(string n) : Player(n) {}
+    ComputerPlayer(string n) : Player(n) {
+        Player::name = n;
+    }
 
-    int pickCard(Board& board, int alreadypicked) override
-    {
+    int pickCard(Board& board, int alreadypicked) {
 
         if (alreadypicked != -1) {
             int target = board.values[alreadypicked];
             for (int i = 0; i < board.size; i++) {
-                if (!board.matched[i] && i != alreadypicked && board.values[i] == target)
-                    {
+                if (!board.matched[i] && i != alreadypicked && board.values[i] == target) {
                     cout << name << " again pick card " << i + 1 << "\n";
                     return i;
                 }
             }
         }
+
         for (int i = 0; i < board.size; i++) {
             if (!board.matched[i] && i != alreadypicked) {
                 cout << name << " picks card " << i + 1 << "\n";
@@ -93,7 +92,7 @@ public:
         return 0;
     }
 
-    void showResult() override {
+    void showResult() {
         cout << name << " (Computer): " << score << " pairs\n";
     }
 };
@@ -106,8 +105,6 @@ void playGame(Player* p1, Player* p2, bool twoPlayers) {
     int current = 1;
 
     while (!board.allMatched()) {
-
-
         Player* p;
         if (current == 1)
             p = p1;
@@ -136,10 +133,6 @@ void playGame(Player* p1, Player* p2, bool twoPlayers) {
         }
     }
 
-
-
-
-
     p1->showResult();
     if (twoPlayers) {
         p2->showResult();
@@ -160,7 +153,6 @@ int main() {
 
     int mode;
     cin >> mode;
-    cout << "\n";
 
     switch (mode) {
         case 1: {
