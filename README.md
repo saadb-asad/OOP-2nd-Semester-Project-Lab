@@ -1,17 +1,6 @@
 # Memory Matching Game
 A console-based Memory Matching Game written in C++ as a semester project to demonstrate core Object-Oriented Programming concepts.
 
----
-
-## How to Compile & Run
-
-```bash
-g++ memory_matching_game.cpp -o game
-./game
-```
-
----
-
 ## How to Play
 
 1. Run the program and select a game mode.
