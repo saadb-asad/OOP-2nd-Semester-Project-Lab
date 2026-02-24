@@ -1,6 +1,8 @@
 # Memory Matching Game
 A console-based Memory Matching Game written in C++ as a semester project to demonstrate core Object-Oriented Programming concepts.
 
+---
+
 ## How to Play
 
 1. Run the program and select a game mode.
@@ -18,7 +20,6 @@ A console-based Memory Matching Game written in C++ as a semester project to dem
 |---|---|
 | 1. Single Player | One player finds all pairs alone |
 | 2. Multiplayer | Two players take turns, most pairs wins |
-| 3. Play Against Computer | You vs the Computer |
 
 ---
 
@@ -26,7 +27,7 @@ A console-based Memory Matching Game written in C++ as a semester project to dem
 
 ```
 Positions: [1] [2] [3] [4] [5] [6]
-Cards:      ?   ?   ?   ?   ?   ?
+Cards:      ?    ?    ?    ?    ?    ?
 ```
 
 - `?` — card is hidden
@@ -40,9 +41,9 @@ There are **3 pairs** hidden on the board: values 1, 2, and 3 each appear twice.
 
 | Concept | Where |
 |---|---|
-| Classes & Objects | `Board`, `Player`, `HumanPlayer`, `ComputerPlayer` |
+| Classes & Objects | `Board`, `Player`, `HumanPlayer` |
 | Constructors | Every class has a constructor |
-| Inheritance | `HumanPlayer` and `ComputerPlayer` extend `Player` |
+| Inheritance | `HumanPlayer` extends `Player` |
 | Pointers | `Player* p1`, `Player* p2`, `Player* p` |
 | Arrays | `values[6]` and `matched[6]` in `Board` |
 | Dynamic Memory | `new` to create players, `delete` to free them |
@@ -57,12 +58,11 @@ There are **3 pairs** hidden on the board: values 1, 2, and 3 each appear twice.
 ```
 memory_matching_game.cpp
 │
-├── class Board          — manages the card grid
-├── class Player         — abstract base class
-├── class HumanPlayer    — human input handling
-├── class ComputerPlayer — computer AI logic
-├── playGame()           — main game loop
-└── main()               — mode selection & startup
+├── class Board        — manages the card grid
+├── class Player       — abstract base class
+├── class HumanPlayer  — handles human input
+├── playGame()         — main game loop
+└── main()             — mode selection & startup
 ```
 
 ---
@@ -73,8 +73,7 @@ memory_matching_game.cpp
 Select Mode:
 1.Single Player
 2.Multiplayer
-3.Play Against Computer
-Choice: 3
+Choice: 2
 
 Ready!
 Positions: [1] [2] [3] [4] [5] [6]
@@ -87,10 +86,10 @@ Player 1, pick one card (1-6): 4
 Value: 1
 MATCH!
 
-Computer's Turn
-Computer picks card 2
+Player 2's Turn
+Player 2, pick one card (1-6): 2
 Value: 2
-Computer again pick card 5
-Value: 2
-MATCH!
+Player 2, pick one card (1-6): 3
+Value: 3
+No match!
 ```
