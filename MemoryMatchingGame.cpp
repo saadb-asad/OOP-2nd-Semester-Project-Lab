@@ -43,6 +43,7 @@ public:
     }
 
     virtual int pickCard(Board& board, int alreadyPicked) = 0;
+
     virtual void showResult() {
         cout << name << ": " << score << " pairs\n";
     }
@@ -51,8 +52,7 @@ public:
 
 class HumanPlayer : public Player {
 public:
-    HumanPlayer(string n) : Player (n)
-    {
+    HumanPlayer(string n) : Player(n) {
         Player::name = n;
     }
 
@@ -61,39 +61,6 @@ public:
         cout << name << ", pick one card (1-6): ";
         cin >> choice;
         return choice - 1;
-    }
-};
-
-
-class ComputerPlayer : public Player {
-public:
-    ComputerPlayer(string n) : Player(n) {
-        Player::name = n;
-    }
-
-    int pickCard(Board& board, int alreadypicked) {
-
-        if (alreadypicked != -1) {
-            int target = board.values[alreadypicked];
-            for (int i = 0; i < board.size; i++) {
-                if (!board.matched[i] && i != alreadypicked && board.values[i] == target) {
-                    cout << name << " again pick card " << i + 1 << "\n";
-                    return i;
-                }
-            }
-        }
-
-        for (int i = 0; i < board.size; i++) {
-            if (!board.matched[i] && i != alreadypicked) {
-                cout << name << " picks card " << i + 1 << "\n";
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    void showResult() {
-        cout << name << " (Computer): " << score << " pairs\n";
     }
 };
 
@@ -148,7 +115,7 @@ void playGame(Player* p1, Player* p2, bool twoPlayers) {
 
 
 int main() {
-    cout << "Select Mode:\n1.Single Player\n2.Multiplayer\n3.Play Against Computer\n";
+    cout << "Select Mode:\n1.Single Player\n2.Multiplayer\n";
     cout << "Choice: ";
 
     int mode;
@@ -164,14 +131,6 @@ int main() {
         case 2: {
             Player* p1 = new HumanPlayer("Player 1");
             Player* p2 = new HumanPlayer("Player 2");
-            playGame(p1, p2, true);
-            delete p1;
-            delete p2;
-            break;
-        }
-        case 3: {
-            Player* p1 = new HumanPlayer("Player 1");
-            Player* p2 = new ComputerPlayer("Computer");
             playGame(p1, p2, true);
             delete p1;
             delete p2;
