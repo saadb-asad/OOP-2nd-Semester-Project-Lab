@@ -68,6 +68,33 @@ memory_matching_game.cpp
 ---
 
 ## Example Output
+## Single Player
+
+```
+Select Mode:
+1.Single Player
+2.Multiplayer
+Choice: 1
+Ready!
+
+Positions: [1] [2] [3] [4] [5] [6] 
+Cards:      ?   ?   ?   ?   ?   ?  
+
+Player 1's Turn
+
+Positions: [1] [2] [3] [4] [5] [6] 
+Cards:      ?   ?   ?   ?   ?   ?  
+
+Player 1, pick one card (1-6): 1
+Value: 1
+Player 1, pick one card (1-6): 4
+Value: 1
+MATCH!
+
+```
+
+
+## Multi-Player
 
 ```
 Select Mode:
