@@ -116,7 +116,7 @@ void playGame(Player* p1, Player* p2, bool twoPlayers) {
 
 int main() {
     cout << "Select Mode:\n1.Single Player\n2.Multiplayer\n";
-    cout << "Choice: ";
+    cout << "Choice: " << endl;
 
     int mode;
     cin >> mode;
